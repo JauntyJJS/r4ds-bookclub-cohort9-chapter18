@@ -25,6 +25,26 @@ format:
     scrollable: true
     mouse-wheel: true
     preview-links: auto
+    include-in-header: 
+      text: |
+        <meta name="github-repo" content="JauntyJJS/r4ds-bookclub-cohort9-chapter18" />
+        <meta name="twitter:title" content="Chapter 18: Missing Values slides for R For Data Science 2nd Edition Book Club Cohort 9" />
+        <meta name="twitter:description" content="This slide deck covers Chapter 18: Missing Values from the book, R For Data Science 2nd Edition. This is presented for the R4DS book club, cohort 9." />
+        <meta name="twitter:url" content="https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18" />
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18/main/share-card.png" />
+        <meta name="twitter:image:alt" content="Title slide of Chapter 18: Missing Values from the book, R For Data Science 2nd Edition presented at the R4DS book club, cohort 9." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@JauntyJJS" />
+        <meta name="twitter:site" content="@JauntyJJS" />
+        <meta property="og:title" content="Chapter 18: Missing Values slides for R For Data Science 2nd Edition Book Club Cohort 9" />
+        <meta property="og:description" content="This slide deck covers Chapter 18: Missing Values from the book, R For Data Science 2nd Edition. This is presented for the R4DS book club, cohort 9." />
+        <meta property="og:url" content="https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18/main/share-card.png" />
+        <meta property="og:image:alt" content="Title slide of Chapter 18: Missing Values from the book, R For Data Science 2nd Edition presented at the R4DS book club, cohort 9." />
+        <meta property="og:site_name" content="R4DS Cohort 9" />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="article:author" content="Jeremy Selva" />
 ---
 
 ```{r setup, include=FALSE}
@@ -80,6 +100,13 @@ penguins |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Introduction
 
 We encountered missing values in previous chapters.
@@ -127,6 +154,13 @@ flights |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Introduction
 
 We encountered missing values in previous chapters.
@@ -147,6 +181,13 @@ We learn more of the details in this chapter, covering additional tools (besides
 *  Explicit missing values
 *  Implicit missing values
 *  Empty groups
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ## Explicit missing values 
 
@@ -189,6 +230,13 @@ treatment |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Explicit missing values 
 
 Missing values may need to be represented with some fixed and known value, most commonly 0. You can use [`dplyr::coalesce()`](https://dplyr.tidyverse.org/reference/coalesce.html) to replace them
@@ -205,6 +253,13 @@ dplyr::coalesce(y, z)
 
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Explicit missing values 
 
 If we need to replace na for multiple columns, [`tidyr::replace_na`](https://tidyr.tidyverse.org/reference/replace_na.html) is more useful.
@@ -219,6 +274,13 @@ df
 df |> tidyr::replace_na(list(x = 0, y = "unknown"))
 
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ## Explicit missing values 
 
@@ -236,6 +298,13 @@ na_if(x, -99)
 
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Explicit missing values 
 
 R has one special type of missing value called `NaN` (pronounced “nan”), or **n**ot **a** **n**umber. NaN occurs when a mathematical operation that has an indeterminate result:
@@ -251,6 +320,13 @@ Inf - Inf
 
 sqrt(-1)
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ## Explicit missing values 
 
@@ -277,6 +353,13 @@ is.nan(x)
 
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Implicit missing values
 
 Consider a simple dataset that records the price of some stock each quarter:
@@ -298,6 +381,13 @@ This dataset has two missing observations:
 
 -  The price for the first quarter of 2021 is implicitly missing, because it simply does not appear in the dataset.
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Implicit missing values
 
 If there is a need to make implicit missing values explicit, we can pivot the data using [`tidyr::pivot_wider`](https://tidyr.tidyverse.org/reference/pivot_wider.html).
@@ -313,6 +403,13 @@ wide_stocks <-  stocks |>
 
 wide_stocks
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ## Implicit missing values
 
@@ -355,6 +452,13 @@ wide_stocks |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Implicit missing values
 
 [`tidyr::complete()`](https://tidyr.tidyverse.org/reference/complete.html) turns implicit missing values into explicit missing values based on combination values from its input columns.
@@ -396,6 +500,13 @@ stocks |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Implicit missing values
 
 Sometimes the individual variables are themselves incomplete and they is a need to provide your own data. For example, if we know that the stocks dataset is supposed to run from 2019 to 2021, we could explicitly supply those values for year.
@@ -436,6 +547,13 @@ stocks |>
 :::
 
 ::::
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ## Implicit missing values
 
@@ -484,6 +602,13 @@ dest_flights |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Implicit missing values
 
 Here, 722 planes do not have any [planes](https://nycflights13.tidyverse.org/reference/planes.html) metadata information.
@@ -531,6 +656,13 @@ tailnum_flights |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Exercises
 
 Can you find any relationship between the carrier and the rows that appear to be missing from `planes` ?
@@ -554,6 +686,13 @@ tailnum_carrier_flights |>
   )
 
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ## Exercises
 
@@ -597,6 +736,13 @@ missing_tailnum_carrier_flights |>
 
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ##  Factors and empty groups
 
 A final type of missingness is the empty group, a group that doesn’t contain any observations, which can arise when working with factors.
@@ -613,6 +759,13 @@ health <- tibble(
 )
 
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ##  Factors and empty groups
 
@@ -634,6 +787,13 @@ health |> dplyr::count(smoker,
                        .drop = FALSE)
 
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ##  Factors and empty groups
 
@@ -676,6 +836,13 @@ ggplot2::ggplot(
 :::
 
 ::::
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
 
 ##  Factors and empty groups
 
@@ -729,6 +896,13 @@ health |>
 We get some interesting results here because when summarizing an empty group, the summary functions are applied to zero-length vectors
 ::::
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ##  Factors and empty groups
 
 Here we see `mean({zero_vec})` returning `NaN` because 
@@ -757,6 +931,13 @@ health |>
 
 ```
 
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ##  Factors and empty groups
 
 Instead of `.drop = FALSE`, we can use [`tidyr::complete()`](https://tidyr.tidyverse.org/reference/complete.html)  to the implicit missing values explicit. The main drawback of this approach is that you get an `NA` for the count, even though you know that it should be zero.
@@ -779,3 +960,10 @@ health |>
   tidyr::complete(.data[["smoker"]])
 
 ```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
