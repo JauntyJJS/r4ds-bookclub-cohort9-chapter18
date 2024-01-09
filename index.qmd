@@ -7,8 +7,6 @@ author: Jeremy Selva [`r fontawesome::fa(name = "linkedin")`](https://www.linked
 knitr:
   opts_chunk:
     echo: true
-    warning: false
-    message: false
     dpi: 320
     out.width: "80%"
     fig.width: 6
@@ -663,6 +661,180 @@ https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
 
 :::
 
+## Extra
+
+Use [`dplyr::anti_join`](https://dplyr.tidyverse.org/reference/filter-joins.html) to isolate rows causing [`dplyr::inner_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html) error.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+#| warning: true
+#| error: true
+
+three_penguins <- tribble(
+  ~samp_id, ~species,    ~island,
+  1,        "Adelie",    "Torgersen",
+  2,        "Gentoo",    "Biscoe",
+  3,        "Chinstrap", "Dream"
+)
+
+weight_extra <- tribble(
+  ~samp_id,  ~body_mass_g,
+  0,         1500,
+  1,         3220,
+  2,         4730,
+  3,         4000,
+  4,         1000,
+  5,         1100
+)
+
+three_penguins |> 
+  dplyr::inner_join(
+    y = weight_extra,
+    by = dplyr::join_by("samp_id"),
+    unmatched = "error"
+ ) 
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+#| warning: true
+
+weight_extra |> 
+  dplyr::anti_join(
+    y = three_penguins,
+    by = dplyr::join_by("samp_id")
+ ) 
+
+```
+
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
+## Extra
+
+Use [`dplyr::anti_join`](https://dplyr.tidyverse.org/reference/filter-joins.html) to isolate [`dplyr::inner_join`](https://dplyr.tidyverse.org/reference/mutate-joins.html) error.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+#| error: true
+#| warning: true
+
+three_penguins <- tribble(
+  ~samp_id, ~species,    ~island,
+  1,        "Adelie",    "Torgersen",
+  2,        "Gentoo",    "Biscoe",
+  3,        "Chinstrap", "Dream"
+)
+
+weight_no_3 <- tribble(
+  ~samp_id,  ~body_mass_g,
+  1,         3220,
+  2,         4730
+)
+
+three_penguins |> 
+  dplyr::inner_join(
+    y = weight_no_3,
+    by = dplyr::join_by("samp_id"),
+    unmatched = "error"
+ ) 
+
+```
+
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: true
+#| warning: true
+
+
+three_penguins |> 
+  dplyr::anti_join(
+    y = weight_no_3,
+    by = dplyr::join_by("samp_id")
+ ) 
+
+
+```
+
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
+## Extra
+
+Use [`dplyr::anti_join`](https://dplyr.tidyverse.org/reference/filter-joins.html), unfortunately cannot resolve multiple matches. Use argument both `relationship = "one-to-one"` and `unmatched = "error"` to ensure one row from x matches with exactly one row of y.  
+
+```{r}
+#| echo: true
+#| warning: true
+#| error: true
+#| output-location: column
+
+three_penguins <- tribble(
+  ~samp_id, ~species,    ~island,
+  1,        "Adelie",    "Torgersen",
+  2,        "Gentoo",    "Biscoe",
+  3,        "Chinstrap", "Dream"
+)
+
+weight_extra_2 <- tribble(
+  ~samp_id,  ~body_mass_g,
+  1,         3220,
+  2,         4730,
+  2,         4725,
+  3,         4000
+)
+
+three_penguins |> 
+  dplyr::inner_join(
+    y = weight_extra_2,
+    by = dplyr::join_by("samp_id"),
+    relationship = "one-to-one",
+    unmatched = "error"
+ ) 
+
+```
+
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
 ## Exercises
 
 Can you find any relationship between the carrier and the rows that appear to be missing from `planes` ?
@@ -958,6 +1130,208 @@ health |>
     sd_age = sd(.data[["age"]])
   ) |> 
   tidyr::complete(.data[["smoker"]])
+
+```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
+## Extra
+
+Taken from [`forcats 1.0.0` blog](https://www.tidyverse.org/blog/2023/01/forcats-1-0-0/)
+
+There are two ways to represent a missing value in a factor:
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+NA as values
+
+```{r}
+#| echo: true
+
+f1 <- factor(c("x", "y", NA, NA, "x"), 
+             exclude = NA)
+
+levels(f1)
+
+```
+
+:::
+
+::: {.column width="50%"}
+
+NA as factors
+
+```{r}
+#| echo: true
+
+f2 <- factor(c("x", "y", NA, NA, "x"), 
+             exclude = NULL)
+
+levels(f2)
+
+```
+
+:::
+
+::::
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
+## Extra
+
+They provide different behaviour when `is.na` and `as.integer` is applied
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+NA as values
+
+```{r}
+#| echo: true
+
+f1 <- factor(c("x", "y", NA, NA, "x"), 
+             exclude = NA)
+
+is.na(f1)
+
+as.integer(f1)
+
+```
+
+`NA`s in the values tend to be best for data analysis.
+
+:::
+
+::: {.column width="50%"}
+
+NA as factors
+
+```{r}
+#| echo: true
+
+f2 <- factor(c("x", "y", NA, NA, "x"), 
+             exclude = NULL)
+
+is.na(f2)
+
+as.integer(f2)
+
+```
+
+`NA`s in the levels are useful if you need to control where missing values are shown in a table or a plot
+
+:::
+
+::::
+
+To make it easier to switch between these forms, forcats now comes [`fct_na_value_to_level()`](https://forcats.tidyverse.org/reference/fct_na_value_to_level.html) and [`fct_na_level_to_value()`](https://forcats.tidyverse.org/reference/fct_na_value_to_level.html).
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
+
+## Extra
+
+In the plot below, we use [`fct_infreq()`](https://forcats.tidyverse.org/reference/fct_inorder.html) to reorder the levels of the factor so that the highest frequency levels are at the top of the bar chart. However, because the `NA`s are stored in the values, [`fct_infreq()`](https://forcats.tidyverse.org/reference/fct_inorder.html) has no ability to affect them, so they appear in their "default" position. 
+
+```{r}
+#| echo: true
+#| output-location: column
+
+example <- data.frame(
+  hair_color = c(starwars$hair_color, 
+                 rep("missing", 10), 
+                 rep("don't know", 5))
+ ) |> 
+  dplyr::mutate(
+    hair_color = .data[["hair_color"]] |> 
+      # Reorder factor by frequency
+      forcats::fct_infreq() |> 
+      # Group hair colours with less than 2 observations as Other
+      forcats::fct_lump_min(2, other_level = "(Other)") |>
+      forcats::fct_rev()
+  ) 
+
+example |> 
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(
+      y = .data[["hair_color"]]
+    )
+  ) + 
+  ggplot2::geom_bar() + 
+  ggplot2::labs(y = "Hair color")
+
+
+```
+
+::: footer
+
+https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18
+[`r fontawesome::fa(name = "link")`](https://jauntyjjs.github.io/r4ds-bookclub-cohort9-chapter18/) [`r fontawesome::fa(name = "github")`](https://github.com/JauntyJJS/r4ds-bookclub-cohort9-chapter18)
+
+:::
+
+## Extra
+
+To consolidate all missing values, 
+
+-  Use [`fct_recode`](https://forcats.tidyverse.org/reference/fct_recode.html) to convert "don't know" to the value "missing".
+
+-  Use [`fct_na_level_to_value()`](https://forcats.tidyverse.org/reference/fct_na_value_to_level.html) to convert NA  as a factor called "missing".
+
+-  Use [`fct_na_value_to_level()`](https://forcats.tidyverse.org/reference/fct_na_value_to_level.html) to convert NA to the value "missing".
+
+```{r}
+#| echo: true
+#| output-location: column
+#| code-line-numbers: "|10-15"
+
+example <- data.frame(
+  hair_color = c(starwars$hair_color, 
+                 rep("missing", 10), 
+                 rep("don't know", 5))
+ ) |> 
+  dplyr::mutate(
+    hair_color = .data[["hair_color"]] |> 
+      # Reorder factor by frequency
+      forcats::fct_infreq() |> 
+      forcats::fct_recode(
+        missing = "don't know") |> 
+      forcats::fct_na_level_to_value(
+        extra_levels = "missing") |>
+      forcats::fct_na_value_to_level(
+        level = "(Missing)") |>
+      # Group hair colours with less than 2 observations as Other
+      forcats::fct_lump_min(2, other_level = "(Other)") |>
+      forcats::fct_rev()
+  )
+
+example |> 
+  ggplot2::ggplot(
+    mapping = ggplot2::aes(
+      y = .data[["hair_color"]]
+    )
+  ) + 
+  ggplot2::geom_bar() + 
+  ggplot2::labs(y = "Hair color")
+
 
 ```
 
